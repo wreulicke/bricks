@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.18.0"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
+    }
+}
+
+subprojects {
+    group = "com.github.wreulicke.bricks"
+
+    apply plugin: 'java'
+    apply plugin: "jacoco"
+    apply plugin: "com.diffplug.gradle.spotless"
+    apply plugin: "io.spring.dependency-management"
+
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.4.0'
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+    spotless {
+        def headerFile = "/** " + rootProject.file("LICENSE.md").text + "*/"
+        java {
+            licenseHeader headerFile, "(package|import)"
+            eclipse().configFile rootProject.file("eclipse-format-setting.xml")
+            trimTrailingWhitespace()
+            endWithNewline()
+            removeUnusedImports()
+        }
+
+        format 'misc', {
+            target '*.gradle'
+
+            indentWithSpaces(2)
+            endWithNewline()
+        }
+    }
+}
