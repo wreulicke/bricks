@@ -9,3 +9,4 @@
 
 rootProject.name = 'bricks'
 include "check-token-reactive-authenticator"
+include "enhanced-okhttp-logging-interceptor"

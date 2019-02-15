@@ -9,7 +9,6 @@ dependencies {
     compile 'org.springframework.security:spring-security-oauth2-resource-server'
     compile 'org.springframework.security.oauth:spring-security-oauth2:2.3.4.RELEASE'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
