@@ -35,6 +35,7 @@ public class CheckTokenAuthenticationToken extends AbstractOAuth2TokenAuthentica
 
   private Map<String, Object> attributre;
   private String name;
+  private String userName;
 
   protected CheckTokenAuthenticationToken(OAuth2AccessToken token, Map<String, Object> attributre, Collection<GrantedAuthority> authorities,
     String name) {
@@ -52,5 +53,17 @@ public class CheckTokenAuthenticationToken extends AbstractOAuth2TokenAuthentica
   @Override
   public String getName() {
     return name;
+  }
+  
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+  
+  @Override public String toString() {
+    return "CheckTokenAuthenticationToken{" +
+        "attributre=" + attributre +
+        ", name='" + name + '\'' +
+        ", userName='" + userName + '\'' +
+        '}';
   }
 }

@@ -84,6 +84,14 @@ public class CheckTokenReactiveAuthenticationManager implements ReactiveAuthenti
         if (map.containsKey("error")) {
           throw new OAuth2AuthenticationException(invalidToken("contains error: " + map.get("error")));
         }
+        if (!map.containsKey("active")) {
+            throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
+        } else {
+            Object active = map.get("active");
+            if (active instanceof Boolean && !((Boolean) active)) {
+                throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
+            }
+        }
 
         Instant expiresAt = null;
         if (map.containsKey("exp")) {
@@ -111,9 +119,11 @@ public class CheckTokenReactiveAuthenticationManager implements ReactiveAuthenti
 
         OAuth2AccessToken accessToken = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER, token, null, expiresAt, scopes);
         String client_id = (String) map.get("client_id");
-        return new CheckTokenAuthenticationToken(accessToken, map, authorities, client_id);
-      })
-      .cast(Authentication.class);
+        String userName = (String) map.get("user_name");
+        CheckTokenAuthenticationToken checkTokenAuthenticationToken = new CheckTokenAuthenticationToken(accessToken, map, authorities, client_id);
+        checkTokenAuthenticationToken.setUserName(userName);
+        return checkTokenAuthenticationToken;
+      });
   }
 
   public Mono<ClientResponse> checkToken(String token) {
