@@ -54,16 +54,13 @@ public class CheckTokenAuthenticationToken extends AbstractOAuth2TokenAuthentica
   public String getName() {
     return name;
   }
-  
+
   public void setUserName(String userName) {
     this.userName = userName;
   }
-  
-  @Override public String toString() {
-    return "CheckTokenAuthenticationToken{" +
-        "attributre=" + attributre +
-        ", name='" + name + '\'' +
-        ", userName='" + userName + '\'' +
-        '}';
+
+  @Override
+  public String toString() {
+    return "CheckTokenAuthenticationToken{" + "attributre=" + attributre + ", name='" + name + '\'' + ", userName='" + userName + '\'' + '}';
   }
 }

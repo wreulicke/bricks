@@ -85,12 +85,13 @@ public class CheckTokenReactiveAuthenticationManager implements ReactiveAuthenti
           throw new OAuth2AuthenticationException(invalidToken("contains error: " + map.get("error")));
         }
         if (!map.containsKey("active")) {
+          throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
+        }
+        else {
+          Object active = map.get("active");
+          if (active instanceof Boolean && !((Boolean) active)) {
             throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
-        } else {
-            Object active = map.get("active");
-            if (active instanceof Boolean && !((Boolean) active)) {
-                throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
-            }
+          }
         }
 
         Instant expiresAt = null;

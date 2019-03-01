@@ -1,0 +1,7 @@
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    implementation 'com.vladmihalcea.flexy-pool:flexy-pool-core:2.1.1'
+
+    implementation "org.springframework.cloud:spring-cloud-netflix-concurrency-limits:2.1.0.RELEASE"
+}
