@@ -1,7 +1,7 @@
 
 dependencies {
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    implementation 'com.vladmihalcea.flexy-pool:flexy-pool-core:2.1.1'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    implementation "com.vladmihalcea.flexy-pool:flexy-pool-core:$flexyPoolVersion"
 
-    compile group: 'com.netflix.concurrency-limits', name: 'concurrency-limits-core', version: '0.1.14'
+    compile group: 'com.netflix.concurrency-limits', name: 'concurrency-limits-core', version: concurrencyLimitsVersion
 }

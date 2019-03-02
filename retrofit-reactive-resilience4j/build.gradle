@@ -1,9 +1,9 @@
 
 dependencies {
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.5.0'
-    compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: '2.5.0'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'com.squareup.retrofit2', name: 'retrofit', version: retrofitVersion
+    compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: retrofitVersion
 
-    implementation 'io.github.resilience4j:resilience4j-circuitbreaker:0.13.2'
-    implementation group: 'io.github.resilience4j', name: 'resilience4j-retrofit', version: '0.13.2'
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-circuitbreaker', version: resilience4jVersion
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-retrofit', version: resilience4jVersion
 }

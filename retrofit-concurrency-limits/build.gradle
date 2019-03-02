@@ -1,7 +1,7 @@
 
 dependencies {
-    compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.5.0'
-    compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: '2.5.0'
+    compile group: 'com.squareup.retrofit2', name: 'retrofit', version: retrofitVersion
+    compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: retrofitVersion
 
-    compile group: 'com.netflix.concurrency-limits', name: 'concurrency-limits-core', version: '0.1.14'
+    compile group: 'com.netflix.concurrency-limits', name: 'concurrency-limits-core', version: concurrencyLimitsVersion
 }
