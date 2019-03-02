@@ -10,5 +10,6 @@
 rootProject.name = 'bricks'
 include "check-token-reactive-authenticator"
 include "enhanced-okhttp-logging-interceptor"
+include "retrofit-reactive-resillience4j"
 include "flexy-pool-resilience4j"
 include "flexy-pool-concurrency-limits"
