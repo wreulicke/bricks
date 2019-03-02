@@ -10,6 +10,10 @@
 rootProject.name = 'bricks'
 include "check-token-reactive-authenticator"
 include "enhanced-okhttp-logging-interceptor"
-include "retrofit-reactive-resillience4j"
+include "retrofit-reactive-resilience4j"
+include "retrofit-concurrency-limits"
+include "okhttp-concurrency-limits"
+include "rxjava2-mdc-propagation"
+include "spring-webflux-concurrency-limits"
 include "flexy-pool-resilience4j"
 include "flexy-pool-concurrency-limits"
