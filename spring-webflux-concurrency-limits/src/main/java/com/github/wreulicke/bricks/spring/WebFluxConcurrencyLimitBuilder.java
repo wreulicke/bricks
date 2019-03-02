@@ -23,17 +23,29 @@
  */
 package com.github.wreulicke.bricks.spring;
 
-import org.springframework.web.reactive.function.server.ServerRequest;
+import com.netflix.concurrency.limits.limiter.AbstractPartitionedLimiter;
 
-public class WebFluxContext {
+public class WebFluxConcurrencyLimitBuilder extends AbstractPartitionedLimiter.Builder<WebFluxConcurrencyLimitBuilder, WebFluxContext> {
 
-  private final ServerRequest request;
 
-  public WebFluxContext(ServerRequest request) {
-    this.request = request;
+  public WebFluxConcurrencyLimitBuilder partitionByHost() {
+    return this.partitionResolver(webFluxContext -> webFluxContext.getRequest()
+      .uri()
+      .getHost());
   }
 
-  public ServerRequest getRequest() {
-    return request;
+  public WebFluxConcurrencyLimitBuilder partitionByHeaderName(String headerName) {
+    return this.partitionResolver(webFluxContext -> webFluxContext.getRequest()
+      .headers()
+      .header(headerName)
+      .stream()
+      .findFirst()
+      .orElse(null));
+  }
+
+
+  @Override
+  protected WebFluxConcurrencyLimitBuilder self() {
+    return this;
   }
 }
