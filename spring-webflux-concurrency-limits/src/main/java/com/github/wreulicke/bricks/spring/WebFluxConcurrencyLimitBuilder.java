@@ -28,10 +28,9 @@ import com.netflix.concurrency.limits.limiter.AbstractPartitionedLimiter;
 public class WebFluxConcurrencyLimitBuilder extends AbstractPartitionedLimiter.Builder<WebFluxConcurrencyLimitBuilder, WebFluxContext> {
 
 
-  public WebFluxConcurrencyLimitBuilder partitionByHost() {
+  public WebFluxConcurrencyLimitBuilder partitionByPath() {
     return this.partitionResolver(webFluxContext -> webFluxContext.getRequest()
-      .uri()
-      .getHost());
+      .uri().getPath());
   }
 
   public WebFluxConcurrencyLimitBuilder partitionByHeaderName(String headerName) {
