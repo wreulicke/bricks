@@ -30,7 +30,8 @@ public class WebFluxConcurrencyLimitBuilder extends AbstractPartitionedLimiter.B
 
   public WebFluxConcurrencyLimitBuilder partitionByPath() {
     return this.partitionResolver(webFluxContext -> webFluxContext.getRequest()
-      .uri().getPath());
+      .uri()
+      .getPath());
   }
 
   public WebFluxConcurrencyLimitBuilder partitionByHeaderName(String headerName) {

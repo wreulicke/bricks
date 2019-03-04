@@ -74,19 +74,20 @@ public class CheckTokenReactiveAuthenticationManager implements ReactiveAuthenti
         return Mono.empty();
       })
       .map(BearerTokenAuthenticationToken::getToken)
-      .flatMap(this::authenticate)
+      .flatMap(this::authenticateToken)
       .onErrorMap(throwable -> !(throwable instanceof OAuth2AuthenticationException), this::onError);
   }
 
-  public Mono<Authentication> authenticate(String token) {
+  Mono<Authentication> authenticateToken(String token) {
     return checkToken(token).flatMap(clientResponse -> clientResponse.bodyToMono(TYPE_REFERENCE))
       .map(map -> {
         if (map.containsKey("error")) {
           throw new OAuth2AuthenticationException(invalidToken("contains error: " + map.get("error")));
         }
-        if (!map.containsKey("active")) {
-          throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
-        }
+        // comment out for compatibility.
+        // if (!map.containsKey("active")) {
+        // throw new OAuth2AuthenticationException(invalidToken("This token is not active"));
+        // }
         else {
           Object active = map.get("active");
           if (active instanceof Boolean && !((Boolean) active)) {
@@ -127,7 +128,7 @@ public class CheckTokenReactiveAuthenticationManager implements ReactiveAuthenti
       });
   }
 
-  public Mono<ClientResponse> checkToken(String token) {
+  Mono<ClientResponse> checkToken(String token) {
     return webClient.post()
       .uri(checkTokenUri)
       .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
