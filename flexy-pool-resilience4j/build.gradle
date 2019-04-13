@@ -3,4 +3,9 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
     implementation "com.vladmihalcea.flexy-pool:flexy-pool-core:$flexyPoolVersion"
     implementation "io.github.resilience4j:resilience4j-circuitbreaker:$resilience4jVersion"
+
+    testCompile "com.vladmihalcea.flexy-pool:flexy-hikaricp:$flexyPoolVersion"
+    testCompile "com.zaxxer:HikariCP:3.3.1"
+    testCompile "mysql:mysql-connector-java:8.0.15"
+    testCompile "com.github.tomakehurst:wiremock-standalone:2.22.0"
 }

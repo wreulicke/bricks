@@ -77,7 +77,7 @@ public class ConcurrencyLimitConnectionAcquiringStrategy<T extends DataSource> e
     if (listenerOpt.isPresent()) {
       Limiter.Listener listener = listenerOpt.get();
       try {
-        Connection connection = getConnection(requestContext);
+        Connection connection = getConnectionFactory().getConnection(requestContext);
         listener.onSuccess();
         return connection;
       } catch (SQLException e) {

@@ -80,7 +80,7 @@ public class CircuitBreakerConnectionAcquiringStrategy<T extends DataSource> ext
     CircuitBreakerUtils.isCallPermitted(circuitBreaker);
     long start = System.nanoTime();
     try {
-      Connection returnValue = getConnection(requestContext);
+      Connection returnValue = getConnectionFactory().getConnection(requestContext);
       long durationInNanos = System.nanoTime() - start;
       circuitBreaker.onSuccess(durationInNanos);
       return returnValue;
