@@ -1,9 +1,9 @@
 
 dependencies {
     implementation platform(
-        group: "org.springframework.boot",
-        name: "spring-boot-dependencies",
-        version: springBootVersion,
+            group: "org.springframework.boot",
+            name: "spring-boot-dependencies",
+            version: springBootVersion,
     )
     compile group: 'org.springframework', name: 'spring-webflux'
 
