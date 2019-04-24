@@ -5,14 +5,8 @@ dependencies {
             name: "spring-boot-dependencies",
             version: springBootVersion,
     )
-    implementation platform(
-            group: "org.springframework",
-            name: "spring-context",
-    )
-    implementation platform(
-            group: "org.springframework",
-            name: "spring-core",
-    )
+    implementation group: "org.springframework", name: "spring-context",
+    implementation group: "org.springframework", name: "spring-core",
 
     compile group: 'com.netflix.concurrency-limits', name: 'concurrency-limits-core', version: concurrencyLimitsVersion
 }
