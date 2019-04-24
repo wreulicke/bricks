@@ -16,7 +16,6 @@ subprojects {
     apply plugin: "jacoco"
     apply plugin: "maven-publish"
     apply plugin: "com.diffplug.gradle.spotless"
-    apply plugin: "io.spring.dependency-management"
 
     compileJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding = 'UTF-8'
