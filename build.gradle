@@ -11,6 +11,7 @@ buildscript {
 
 subprojects {
     group = "com.github.wreulicke.bricks"
+    version = "0.0.1"
 
     apply plugin: 'java'
     apply plugin: "jacoco"
@@ -36,6 +37,27 @@ subprojects {
 
     test {
         useJUnitPlatform()
+    }
+
+
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allJava
+        archiveClassifier = 'sources'
+    }
+
+    task javadocJar(type: Jar) {
+        from javadoc
+        archiveClassifier = 'javadoc'
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                artifact sourcesJar
+                artifact javadocJar
+            }
+        }
     }
 
     spotless {
