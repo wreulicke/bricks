@@ -9,6 +9,26 @@ buildscript {
     }
 }
 
+ext {
+    concurrencyLimitsVersion = "0.1.14"
+
+    retrofitVersion = "2.5.0"
+    okhttpVersion = "3.13.1"
+
+    rxjavaVersion = "2.2.7"
+
+    springBootVersion = "2.1.6.RELEASE"
+
+    flexyPoolVersion = "2.1.1"
+
+    resilience4jVersion = "0.13.2"
+
+    slf4jVersion = "1.7.25"
+
+    junitJupiterVersion = "5.4.0"
+    mockitoVersion = "2.24.0"
+}
+
 subprojects {
     group = "com.github.wreulicke.bricks"
     version = "0.0.1"
@@ -20,6 +40,8 @@ subprojects {
 
     compileJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding = 'UTF-8'
+
+    targetCompatibility = sourceCompatibility = "1.8"
 
     dependencies {
         testImplementation group: "org.junit.jupiter", name: "junit-jupiter", version: junitJupiterVersion

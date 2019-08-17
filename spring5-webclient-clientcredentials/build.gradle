@@ -1,0 +1,13 @@
+
+dependencies {
+    implementation platform(
+            group: "org.springframework.boot",
+            name: "spring-boot-dependencies",
+            version: springBootVersion,
+    )
+    compile 'org.springframework:spring-webflux'
+    compile "io.projectreactor.netty:reactor-netty"
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+
+    compile 'org.springframework.security:spring-security-oauth2-client'
+}
