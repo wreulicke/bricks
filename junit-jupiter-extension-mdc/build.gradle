@@ -1,0 +1,7 @@
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compileOnly group: "org.junit.jupiter", name: "junit-jupiter", version: junitJupiterVersion
+    compileOnly group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc6'
+    annotationProcessor group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc6'
+}
