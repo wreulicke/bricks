@@ -24,11 +24,15 @@
 package com.github.wreulicke.bricks.junit.jupiter;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MdcExtensionTest {
+
+  Logger log = LoggerFactory.getLogger(MdcExtensionTest.class);
 
   @Test
   public void test() {
@@ -37,6 +41,8 @@ class MdcExtensionTest {
     // we provides `junit.jupiter.extensions.autodetection.enabled` property via
     // junit-platform.properties
     assertThat(MDC.get("test.displayName")).isNotNull();
+    assertThat(MDC.get("test.id")).isNotNull();
+    log.info("MDCExtension test is end.");
   }
 
 }

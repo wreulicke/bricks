@@ -31,6 +31,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.slf4j.MDC;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @AutoService(Extension.class)
 public class MdcExtension implements BeforeEachCallback, AfterEachCallback {
@@ -46,11 +47,13 @@ public class MdcExtension implements BeforeEachCallback, AfterEachCallback {
           .getName()));
     }
     MDC.put("test.displayName", context.getDisplayName());
+    MDC.put("test.id", UUID.randomUUID().toString());
   }
 
   @Override
   public void afterEach(ExtensionContext context) throws Exception {
     MDC.remove("test.displayName");
     MDC.remove("test.class");
+    MDC.remove("test.id");
   }
 }
